@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import fs from 'fs'
+import NavBar from './NavBar'
+import NavBar2 from './NavBar2';
+import LiveRank from './LiveRank';
+import LatestNews from './LatestNews';
 export default function Home() {
   const folderPath = './public/Prem-Logos/';
   const imageFiles = fs.readdirSync(folderPath);
   return (
 
     
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col w-full overflow-hidden">
 
           <div id= 'top-header' className='bg-white w-full flex flex-wrap h-20 pl-28'>
           <span className='text-black p-4 flex flex-wrap items-center ml-6'>
@@ -18,19 +22,31 @@ export default function Home() {
 
     {
                     imageFiles.map((file) => (
-                          <div className='m-auto hover:scale-125 transition-all duration-500 cursor-pointer' key={file}>
+                          <div className=' flex ml-auto my-auto mr-5 hover:scale-125 transition-all duration-500 cursor-pointer' key={file}>
                             <Image width= {35} height = {35} src={`/Prem-Logos/${file}`} alt={file} />
                           </div>
                   ))}            
 
           </div>
-          <Image className='object-cover absolute z-0 top-12 left-4' width= {80} height = {80} src={`/assests/prem-main-logo.png`} alt='Prem Main Logo'/>
+          <Image className='object-cover absolute z-0 top-12 left-4' width= {90} height = {100} src={`/assests/prem-main-logo.png`} alt='Prem Main Logo'/>
           <div className=' bg-purple-700 w-full flex flex-wrap h-16'> 
-              <nav> </nav>
+          <div className='justify-center ml-20'> 
+                <NavBar/>
+                </div>
           </div>
 
-          <div id= 'top-header' className='h-20 bg-white w-full'>
-            <h1> This is the third heading </h1> 
+          <div id= 'top-header' className='h-20 bg-white w-full flex items-end'>
+                      <LatestNews/>
+
+          </div>
+
+          <div id='banner' className="flex  items-end align-bottom bg-[url('/assests/prem-main-lg.png')] bg-cover h-64"> 
+
+              <NavBar2/>
+          </div> 
+
+<div className='flex flex-col mt-10 ml-6'>
+          <LiveRank/>
           </div>
     </main>
   )
