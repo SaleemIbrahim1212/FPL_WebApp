@@ -10,8 +10,7 @@ export default function Home() {
   return (
 
     
-    <main className="flex min-h-screen flex-col w-full overflow-hidden">
-
+    <main className="flex min-h-screen flex-col w-full overflow-x-hidden">
           <div id= 'top-header' className='bg-white w-full flex flex-wrap h-20 pl-28'>
           <span className='text-black p-4 flex flex-wrap items-center ml-6'>
                     Club Links
@@ -35,7 +34,7 @@ export default function Home() {
                 </div>
           </div>
 
-          <div id= 'top-header' className='h-20 bg-white w-full flex items-end'>
+          <div id= 'top-header' className=' bg-white w-full flex h-28 '>
                       <LatestNews/>
 
           </div>

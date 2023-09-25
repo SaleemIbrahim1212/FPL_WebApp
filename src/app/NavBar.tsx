@@ -24,7 +24,6 @@ export default function NavBar() {
   };
 
   const handleListMouseLeave = () => {
-    // When leaving the list, set activeButton to null
     setActiveButton(null);
   };
 
@@ -44,8 +43,8 @@ export default function NavBar() {
               className={`absolute grid grid-cols-2 py-2 px-5 bg-purple-700 border border-gray-300 rounded transition-opacity ease-in-out delay-150 duration-500 ${
                 activeButton === button.label ? 'visible opacity-100' : 'invisible opacity-0'
               }`}
-              onMouseEnter={() => handleMouseEnter(button.label)} // Keep the list open when hovering over it
-              onMouseLeave={handleListMouseLeave} // Close the list when leaving the list
+              onMouseEnter={() => handleMouseEnter(button.label)} 
+              onMouseLeave={handleListMouseLeave} 
             >
               {button.menuItems.map((item, i) => (
                 <li key={i} className="text-white text-xs py-2 px-2">
