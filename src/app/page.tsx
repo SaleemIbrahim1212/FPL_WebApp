@@ -4,13 +4,14 @@ import NavBar from './NavBar'
 import NavBar2 from './NavBar2';
 import LiveRank from './LiveRank';
 import LatestNews from './LatestNews';
+import Teamboard from './Teamboard';
 export default function Home() {
   const folderPath = './public/Prem-Logos/';
   const imageFiles = fs.readdirSync(folderPath);
   return (
 
     
-    <main className="flex min-h-screen flex-col w-full overflow-x-hidden">
+    <main className="flex min-h-screen flex-col w-full overflow-x-hidden h-full">
           <div id= 'top-header' className='bg-white w-full flex flex-wrap h-20 pl-28'>
           <span className='text-black p-4 flex flex-wrap items-center ml-6'>
                     Club Links
@@ -22,10 +23,10 @@ export default function Home() {
     {
                     imageFiles.map((file) => (
                           <div className=' flex ml-auto my-auto mr-5 hover:scale-125 transition-all duration-500 cursor-pointer' key={file}>
-                            <Image width= {35} height = {35} src={`/Prem-Logos/${file}`} alt={file} />
+                            <Image width= {35} height = {35} src={`/Prem-Logos/${file}`} alt={file + ' logo'} />
                           </div>
                   ))}            
-
+ 
           </div>
           <Image className='object-cover absolute z-0 top-12 left-4' width= {90} height = {100} src={`/assests/prem-main-logo.png`} alt='Prem Main Logo'/>
           <div className=' bg-purple-700 w-full flex flex-wrap h-16'> 
@@ -44,8 +45,18 @@ export default function Home() {
               <NavBar2/>
           </div> 
 
-<div className='flex flex-col mt-10 ml-6'>
-          <LiveRank/>
+
+          <div className='flex flex-row mt-10 ml-6'>
+            <div className='flex mr-11'>
+              <LiveRank/>
+            </div>
+            <div className='flex w-fit h-auto'>
+              <Teamboard/>
+            </div>
+            <div className='flex '>
+              <LiveRank/>
+            </div>
+
           </div>
     </main>
   )
