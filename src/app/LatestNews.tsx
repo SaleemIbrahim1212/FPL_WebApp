@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
-async function getNews(topic: String ) {
-  const response = await fetch(`https://newsapi.org/v2/top-headlines?q=${topic.topic}&apiKey=88deb36ba891466a9b3d43cba0e62d66`,{ next: { revalidate: 3600 } });
+async function getNews(topic: any ) {
+  const response = await fetch(`https://newsapi.org/v2/top-headlines?q=premier league&apiKey=88deb36ba891466a9b3d43cba0e62d66`,{ next: { revalidate: 3600 } });
   const data = await response.json();  
   return data;
 }
