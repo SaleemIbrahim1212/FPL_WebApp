@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import Image from 'next/image';
 
-async function getNews() {
-  const response = await fetch('https://newsapi.org/v2/top-headlines?q=premier league&apiKey=88deb36ba891466a9b3d43cba0e62d66');
+async function getNews(topic: String ) {
+  const response = await fetch(`https://newsapi.org/v2/top-headlines?q=${topic.topic}&apiKey=88deb36ba891466a9b3d43cba0e62d66`,{ next: { revalidate: 3600 } });
   const data = await response.json();  
   return data;
 }
@@ -28,7 +27,6 @@ function get_reading_time_avg(article_text : String){
   
 
   return resultText
-  console.log(resultText)
 
 
 
@@ -40,14 +38,14 @@ function get_reading_time_avg(article_text : String){
 
 }
 
-export default async function LatestNews() {
-  const news = await getNews();
+export default async function LatestNews(topic : any ) {
+  const news = await getNews(topic);
   console.log(news.articles.content)
 
   return (
   
     <div className='flex justify-between mt-5'>
-      {news.articles.map((article: any, index: any) => (
+      {news.articles.slice(0,4).map((article: any, index: any) => (
 
         <div key={index} className='w-auto justify-between flex hover:scale-125 transition-all duration-500 cursor-pointer ml-4 mr-3'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="black" className="w-10 h-10">
